@@ -7,6 +7,6 @@
 // Laat je beide leeg, dan draait de pagina in demomodus: alles wat je invult
 // blijft alleen in de eigen browser staan en er zijn geen accounts.
 window.KALENDER_CONFIG = {
-  SUPABASE_URL: 'https://wsxqsmfzxalwynkysdtl.supabase.co/rest/v1/',
+  SUPABASE_URL: 'https://wsxqsmfzxalwynkysdtl.supabase.co',
   SUPABASE_ANON_KEY: 'sb_publishable_D8vkzBNUxIWZesucoVBp_g_9_XOBTaV'
 };
