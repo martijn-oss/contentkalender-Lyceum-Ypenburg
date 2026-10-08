@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contentkalender Lyceum Ypenburg</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ff8100">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 98'><polygon fill='%23ffc080' points='78.6,.4 97.1,13.3 65.6,58.5 52.4,39.3'/><polygon fill='%23ffc080' points='14.3,62 39.2,97.2 11,97.2 0,80.5'/><polygon fill='%23ff8100' points='6.6,13.3 25.3,.4 65.6,58.5 38.5,58.5'/><polygon fill='%23f26000' points='38.5,58.5 65.6,58.5 39.2,97.2 25.3,77.4'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Huisstijlfont Sofia Pro (Adobe Fonts): voeg het domein van deze site toe aan de Adobe Fonts-kit
+     en zet daarna de regel hieronder aan. Zonder kit valt de pagina terug op Outfit.
+<link rel="stylesheet" href="https://use.typekit.net/JOUW-KIT-ID.css">
+-->
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brandbar">
+    <a class="wordmark" href="https://www.lyceumypenburg.nl/" aria-label="Lyceum Ypenburg - mavo, havo, atheneum, gymnasium">
+      <svg viewBox="0 0 98 98" aria-hidden="true"><defs><linearGradient id="ly-vouw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f26000"/><stop offset=".55" stop-color="#ff8100"/></linearGradient></defs><polygon fill="#ffc080" points="78.6,.4 97.1,13.3 65.6,58.5 52.4,39.3"/><polygon fill="#ffc080" points="14.3,62 39.2,97.2 11,97.2 0,80.5"/><polygon fill="#ff8100" points="6.6,13.3 25.3,.4 65.6,58.5 38.5,58.5"/><polygon fill="url(#ly-vouw)" points="38.5,58.5 65.6,58.5 39.2,97.2 25.3,77.4"/></svg>
+      <span class="wm" aria-hidden="true"><span class="wm-1">Lyceum</span><span class="wm-2">Ypenburg</span><span class="wm-3">mavo, havo, atheneum, gymnasium</span></span>
+    </a>
+    <span class="account" id="account" hidden><span>Ingelogd als</span> <b id="who"></b><button class="btn ghost" id="logout" type="button">Uitloggen</button></span>
+    <span class="tagline"><b>Eigenwijs Klassiek</b><br>waar traditie en talent samenkomen</span>
+  </div>
+
+  <header class="top">
+    <p class="eyebrow">Redactieteam - 6 stappen</p>
+    <h1>Contentkalender</h1>
+    <p class="lead">Overzicht van het volledige werkboek.</p>
+  </header>
+  <div class="savebar">
+    <span class="savepill" id="savepill" data-s="idle"><span class="dot"></span><span id="savetext">Verbinden...</span></span>
+    <span id="hint">Velden met een stippellijn kun je invullen - je wijzigingen worden automatisch in jouw account opgeslagen.</span>
+  </div>
+  <div class="demo" id="demo" hidden><strong>Preview:</strong> dit is de testversie om aanpassingen te bekijken. Wat je invult wordt alleen in je eigen browser bewaard. De live versie werkt met accounts.</div>
+
+  <section class="authcard" id="auth" hidden aria-labelledby="authtitle">
+    <div class="intro">
+      <h2 id="authtitle">Inloggen</h2>
+      <p>Log in om jouw eigen versie van de contentkalender in te vullen. Je antwoorden worden in je account bewaard, zodat je later verder kunt waar je gebleven was.</p>
+      <p>Alleen jij ziet wat je invult.</p>
+    </div>
+    <form class="authform" id="authform" novalidate>
+      <label id="lbl-email">E-mailadres<input type="email" id="a-email" autocomplete="email" required></label>
+      <label id="lbl-pass"><span id="pass-label">Wachtwoord</span><input type="password" id="a-pass" autocomplete="current-password" minlength="8" required></label>
+      <button class="btn" type="submit" id="a-submit">Inloggen</button>
+      <p class="authmsg" id="a-msg" role="status" aria-live="polite"></p>
+      <div class="authlinks">
+        <button class="linkbtn" type="button" id="a-switch">Nog geen account? Account aanmaken</button>
+        <button class="linkbtn" type="button" id="a-forgot">Wachtwoord vergeten?</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="tabbar" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-tab="leesmij">Leesmij</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="doelen"><span class="num">1</span>Doelen &amp; KPI's</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="kanalen"><span class="num">2</span>Kanalen &amp; rollen</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="pijlers"><span class="num">3</span>Contentpijlers</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="formats"><span class="num">4</span>Formats</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="kalender"><span class="num">5</span>Contentkalender</button>
+    <button class="tab" role="tab" aria-selected="false" data-tab="analyse"><span class="num">6</span>Analyse</button>
+  </div>
+
+  <!-- LEESMIJ -->
+  <section class="panel active" data-panel="leesmij">
+    <h2>1 werkboek, zes stappen</h2>
+    <p class="sub">Opgebouwd in 6 stappen: van doelen tot maandelijks bijsturen. Klik op een stap om ernaartoe te springen.</p>
+    <div class="stepgrid">
+      <button class="stepcard" data-jump="doelen"><span class="badge">1</span><h3>Doelen &amp; KPI's</h3><p>Per kanaal doel, KPI en streefwaarde vastleggen.</p></button>
+      <button class="stepcard" data-jump="kanalen"><span class="badge">2</span><h3>Kanalen &amp; rollen</h3><p>Wie schrijft, ontwerpt, plant, reageert en analyseert.</p></button>
+      <button class="stepcard" data-jump="pijlers"><span class="badge">3</span><h3>Contentpijlers</h3><p>De 9 rubrieken als pijlers, met een streefverdeling.</p></button>
+      <button class="stepcard" data-jump="formats"><span class="badge">4</span><h3>Formats per kanaal</h3><p>Welke vormen passen bij welk kanaal.</p></button>
+      <button class="stepcard" data-jump="kalender"><span class="badge">5</span><h3>Contentkalender</h3><p>Vult zich automatisch op basis van stap 1 tot en met 4.</p></button>
+      <button class="stepcard" data-jump="analyse"><span class="badge">6</span><h3>Analyse &amp; optimalisatie</h3><p>Maandelijks meten en bijsturen.</p></button>
+    </div>
+  </section>
+
+  <!-- DOELEN & KPI's -->
+  <section class="panel" data-panel="doelen">
+    <h2>Doelen &amp; KPI's</h2>
+    <p class="sub">Per kanaal het doel, hoe vaak je post en hoe je het meet. Kies per kanaal één eenheid (bijvoorbeeld views per post) en vul de streefwaarde en nulmeting in als getal. Bij Analyse vul je per maand het behaalde resultaat in; daar zie je dan of je op koers ligt. De frequentie bepaalt hoeveel posts er in de contentkalender komen.</p>
+    <div class="goal-list">
+      <section class="goal"><h3>TikTok</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.tiktok.doel" data-label="TikTok - Doel" placeholder="bijv. Naamsbekendheid &amp; betrokkenheid" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.tiktok.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.tiktok.kpi" data-label="TikTok - KPI" placeholder="bijv. Views per post, engagementrate" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.tiktok.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.tiktok.toelichting" data-label="TikTok - Toelichting" placeholder="bijv. Views wegen zwaarder dan likes (redactieafspraak)." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.tiktok.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.tiktok.freq" data-label="TikTok - aantal posts" placeholder="3"><select class="field freq-per" data-key="kpi.tiktok.freqper" data-default="week" data-label="TikTok - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.tiktok.freq"></span><span class="fstate" data-state-for="kpi.tiktok.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.tiktok.eenheid" data-label="TikTok - eenheid" placeholder="bijv. views per post" maxlength="80"><span class="fstate" data-state-for="kpi.tiktok.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.tiktok.streef" data-label="TikTok - streefwaarde per maand" placeholder="bijv. 5000" maxlength="20"><span class="fstate" data-state-for="kpi.tiktok.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.tiktok.nul" data-label="TikTok - nulmeting" placeholder="bijv. 1200" maxlength="20"><span class="fstate" data-state-for="kpi.tiktok.nul"></span></div></div></section>
+      <section class="goal"><h3>Instagram</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.instagram.doel" data-label="Instagram - Doel" placeholder="bijv. Naamsbekendheid &amp; betrokkenheid" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.instagram.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.instagram.kpi" data-label="Instagram - KPI" placeholder="bijv. Bereik, opgeslagen posts" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.instagram.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.instagram.toelichting" data-label="Instagram - Toelichting" placeholder="bijv. Grotendeels gevoed vanuit TikTok-content." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.instagram.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.instagram.freq" data-label="Instagram - aantal posts" placeholder="3"><select class="field freq-per" data-key="kpi.instagram.freqper" data-default="week" data-label="Instagram - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.instagram.freq"></span><span class="fstate" data-state-for="kpi.instagram.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.instagram.eenheid" data-label="Instagram - eenheid" placeholder="bijv. bereik per maand" maxlength="80"><span class="fstate" data-state-for="kpi.instagram.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.instagram.streef" data-label="Instagram - streefwaarde per maand" placeholder="bijv. 20000" maxlength="20"><span class="fstate" data-state-for="kpi.instagram.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.instagram.nul" data-label="Instagram - nulmeting" placeholder="bijv. 8000" maxlength="20"><span class="fstate" data-state-for="kpi.instagram.nul"></span></div></div></section>
+      <section class="goal"><h3>Facebook</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.facebook.doel" data-label="Facebook - Doel" placeholder="bijv. Naamsbekendheid (ouders)" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.facebook.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.facebook.kpi" data-label="Facebook - KPI" placeholder="bijv. Bereik" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.facebook.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.facebook.toelichting" data-label="Facebook - Toelichting" placeholder="bijv. Alleen gevoed via Instagram, geen actieve productie." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.facebook.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.facebook.freq" data-label="Facebook - aantal posts" placeholder="2"><select class="field freq-per" data-key="kpi.facebook.freqper" data-default="week" data-label="Facebook - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.facebook.freq"></span><span class="fstate" data-state-for="kpi.facebook.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.facebook.eenheid" data-label="Facebook - eenheid" placeholder="bijv. bereik per maand" maxlength="80"><span class="fstate" data-state-for="kpi.facebook.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.facebook.streef" data-label="Facebook - streefwaarde per maand" placeholder="bijv. 5000" maxlength="20"><span class="fstate" data-state-for="kpi.facebook.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.facebook.nul" data-label="Facebook - nulmeting" placeholder="bijv. 2000" maxlength="20"><span class="fstate" data-state-for="kpi.facebook.nul"></span></div></div></section>
+      <section class="goal"><h3>LinkedIn</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.linkedin.doel" data-label="LinkedIn - Doel" placeholder="bijv. Naamsbekendheid werkgever" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.linkedin.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.linkedin.kpi" data-label="LinkedIn - KPI" placeholder="bijv. Bereik, reacties" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.linkedin.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.linkedin.toelichting" data-label="LinkedIn - Toelichting" placeholder="bijv. Maandelijkse post, arbeidsmarktcommunicatie." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.linkedin.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.linkedin.freq" data-label="LinkedIn - aantal posts" placeholder="1"><select class="field freq-per" data-key="kpi.linkedin.freqper" data-default="week" data-label="LinkedIn - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.linkedin.freq"></span><span class="fstate" data-state-for="kpi.linkedin.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.linkedin.eenheid" data-label="LinkedIn - eenheid" placeholder="bijv. reacties per post" maxlength="80"><span class="fstate" data-state-for="kpi.linkedin.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.linkedin.streef" data-label="LinkedIn - streefwaarde per maand" placeholder="bijv. 25" maxlength="20"><span class="fstate" data-state-for="kpi.linkedin.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.linkedin.nul" data-label="LinkedIn - nulmeting" placeholder="bijv. 8" maxlength="20"><span class="fstate" data-state-for="kpi.linkedin.nul"></span></div></div></section>
+      <section class="goal"><h3>Website / landingpagina's</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.website.doel" data-label="Website / landingpagina's - Doel" placeholder="bijv. Verkeer &amp; aanmeldingen" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.website.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.website.kpi" data-label="Website / landingpagina's - KPI" placeholder="bijv. Organisch verkeer, positie Google, contactformulieren" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.website.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.website.toelichting" data-label="Website / landingpagina's - Toelichting" placeholder="bijv. Nulmeting voor livegang vastleggen." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.website.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.website.freq" data-label="Website / landingpagina's - aantal posts" placeholder="2"><select class="field freq-per" data-key="kpi.website.freqper" data-default="week" data-label="Website / landingpagina's - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.website.freq"></span><span class="fstate" data-state-for="kpi.website.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.website.eenheid" data-label="Website / landingpagina's - eenheid" placeholder="bijv. bezoekers per maand" maxlength="80"><span class="fstate" data-state-for="kpi.website.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.website.streef" data-label="Website / landingpagina's - streefwaarde per maand" placeholder="bijv. 3000" maxlength="20"><span class="fstate" data-state-for="kpi.website.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.website.nul" data-label="Website / landingpagina's - nulmeting" placeholder="bijv. 1500" maxlength="20"><span class="fstate" data-state-for="kpi.website.nul"></span></div></div></section>
+      <section class="goal"><h3>Nieuwsbrief</h3><div class="goal-grid"><div class="gf w4"><span class="gl">Doel</span><textarea class="field" rows="2" data-key="kpi.nieuwsbrief.doel" data-label="Nieuwsbrief - Doel" placeholder="bijv. Betrokkenheid ouders &amp; leerlingen" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.nieuwsbrief.doel"></span></div><div class="gf w4"><span class="gl">KPI</span><textarea class="field" rows="2" data-key="kpi.nieuwsbrief.kpi" data-label="Nieuwsbrief - KPI" placeholder="bijv. Open rate, klikratio" maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.nieuwsbrief.kpi"></span></div><div class="gf w4"><span class="gl">Toelichting</span><textarea class="field" rows="2" data-key="kpi.nieuwsbrief.toelichting" data-label="Nieuwsbrief - Toelichting" placeholder="bijv. Verspreiding via Mailchimp, zondagavond of dinsdag." maxlength="2000"></textarea><span class="fstate" data-state-for="kpi.nieuwsbrief.toelichting"></span></div><div class="gf w3"><span class="gl">Frequentie</span><div class="freq"><input class="field freq-n" type="number" inputmode="numeric" min="0" max="21" step="1" data-key="kpi.nieuwsbrief.freq" data-label="Nieuwsbrief - aantal posts" placeholder="1"><select class="field freq-per" data-key="kpi.nieuwsbrief.freqper" data-default="week" data-label="Nieuwsbrief - per dag, week of maand"><option value="dag">per dag</option><option value="week">per week</option><option value="maand">per maand</option></select></div><span class="fstate" data-state-for="kpi.nieuwsbrief.freq"></span><span class="fstate" data-state-for="kpi.nieuwsbrief.freqper"></span></div><div class="gf w3"><span class="gl">Eenheid</span><input class="field" type="text" data-key="kpi.nieuwsbrief.eenheid" data-label="Nieuwsbrief - eenheid" placeholder="bijv. open rate in %" maxlength="80"><span class="fstate" data-state-for="kpi.nieuwsbrief.eenheid"></span></div><div class="gf w3"><span class="gl">Streefwaarde <em>per maand</em></span><input class="field num" type="text" inputmode="decimal" data-key="kpi.nieuwsbrief.streef" data-label="Nieuwsbrief - streefwaarde per maand" placeholder="bijv. 50" maxlength="20"><span class="fstate" data-state-for="kpi.nieuwsbrief.streef"></span></div><div class="gf w3"><span class="gl">Nulmeting</span><input class="field num" type="text" inputmode="decimal" data-key="kpi.nieuwsbrief.nul" data-label="Nieuwsbrief - nulmeting" placeholder="bijv. 38" maxlength="20"><span class="fstate" data-state-for="kpi.nieuwsbrief.nul"></span></div></div></section>
+    </div>
+  </section>
+
+  <!-- KANALEN & ROLLEN -->
+  <section class="panel" data-panel="kanalen">
+    <h2>Kanalen &amp; rollen</h2>
+    <p class="sub">Per kanaal de doelgroep en wie wat doet. Vul de namen en doelgroepen voor jouw team in.</p>
+    <div class="cardgrid">
+      <div class="chcard"><h3>TikTok</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.tiktok.doelgroep" data-label="TikTok - Doelgroep" placeholder="bijv. Leerlingen uit groep 8" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.tiktok.schrijven" data-label="TikTok - Schrijven" placeholder="bijv. communicatie + leerlingenteam" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.tiktok.ontwerp" data-label="TikTok - Ontwerp" placeholder="bijv. communicatie + leerlingenteam" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.tiktok.inplannen" data-label="TikTok - Inplannen" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.tiktok.reageren" data-label="TikTok - Reageren" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.tiktok.analyseren" data-label="TikTok - Analyseren" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.tiktok.analyseren"></span></span></div>
+      </div>
+      <div class="chcard"><h3>Instagram</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.instagram.doelgroep" data-label="Instagram - Doelgroep" placeholder="bijv. Leerlingen uit groep 8, ouders" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.instagram.schrijven" data-label="Instagram - Schrijven" placeholder="bijv. communicatie + docenten/leerlingen" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.instagram.ontwerp" data-label="Instagram - Ontwerp" placeholder="bijv. communicatie + docenten/leerlingen" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.instagram.inplannen" data-label="Instagram - Inplannen" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.instagram.reageren" data-label="Instagram - Reageren" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.instagram.analyseren" data-label="Instagram - Analyseren" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.instagram.analyseren"></span></span></div>
+      </div>
+      <div class="chcard"><h3>Facebook</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.facebook.doelgroep" data-label="Facebook - Doelgroep" placeholder="bijv. Ouders" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.facebook.schrijven" data-label="Facebook - Schrijven" placeholder="bijv. communicatie (vanuit Instagram)" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.facebook.ontwerp" data-label="Facebook - Ontwerp" placeholder="in te vullen" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.facebook.inplannen" data-label="Facebook - Inplannen" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.facebook.reageren" data-label="Facebook - Reageren" placeholder="bijv. communicatiemedewerker" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.facebook.analyseren" data-label="Facebook - Analyseren" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.facebook.analyseren"></span></span></div>
+      </div>
+      <div class="chcard"><h3>LinkedIn</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.linkedin.doelgroep" data-label="LinkedIn - Doelgroep" placeholder="bijv. Arbeidsmarkt" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.linkedin.schrijven" data-label="LinkedIn - Schrijven" placeholder="bijv. schoolleiding + PR-team" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.linkedin.ontwerp" data-label="LinkedIn - Ontwerp" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.linkedin.inplannen" data-label="LinkedIn - Inplannen" placeholder="bijv. PR-team" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.linkedin.reageren" data-label="LinkedIn - Reageren" placeholder="bijv. PR-team" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.linkedin.analyseren" data-label="LinkedIn - Analyseren" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.linkedin.analyseren"></span></span></div>
+      </div>
+      <div class="chcard"><h3>Website - landingpagina's</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.website.doelgroep" data-label="Website - landingpagina's - Doelgroep" placeholder="bijv. Ouders, leerlingen (SEO)" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.website.schrijven" data-label="Website - landingpagina's - Schrijven" placeholder="bijv. Lyceum Ypenburg (met AI)" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.website.ontwerp" data-label="Website - landingpagina's - Ontwerp" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.website.inplannen" data-label="Website - landingpagina's - Inplannen" placeholder="bijv. Bas / Wouter (TOPIQ)" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.website.reageren" data-label="Website - landingpagina's - Reageren" placeholder="bijv. nvt" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.website.analyseren" data-label="Website - landingpagina's - Analyseren" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.website.analyseren"></span></span></div>
+      </div>
+      <div class="chcard"><h3>Nieuwsbrief</h3>
+        <label class="aud-field"><span class="rk">Doelgroep</span><input class="field" type="text" data-key="kanaal.nieuwsbrief.doelgroep" data-label="Nieuwsbrief - Doelgroep" placeholder="bijv. Ouders, leerlingen, personeel" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.doelgroep"></span></label>
+        <div class="rolerow"><span class="rk">Schrijven</span><span class="rv"><input class="field" type="text" data-key="kanaal.nieuwsbrief.schrijven" data-label="Nieuwsbrief - Schrijven" placeholder="bijv. schoolleiding (nieuws uit de school)" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.schrijven"></span></span></div>
+        <div class="rolerow"><span class="rk">Ontwerp</span><span class="rv"><input class="field" type="text" data-key="kanaal.nieuwsbrief.ontwerp" data-label="Nieuwsbrief - Ontwerp" placeholder="in te vullen" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.ontwerp"></span></span></div>
+        <div class="rolerow"><span class="rk">Inplannen</span><span class="rv"><input class="field" type="text" data-key="kanaal.nieuwsbrief.inplannen" data-label="Nieuwsbrief - Inplannen" placeholder="bijv. TOPIQ" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.inplannen"></span></span></div>
+        <div class="rolerow"><span class="rk">Reageren</span><span class="rv"><input class="field" type="text" data-key="kanaal.nieuwsbrief.reageren" data-label="Nieuwsbrief - Reageren" placeholder="bijv. nvt" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.reageren"></span></span></div>
+        <div class="rolerow"><span class="rk">Analyseren</span><span class="rv"><input class="field" type="text" data-key="kanaal.nieuwsbrief.analyseren" data-label="Nieuwsbrief - Analyseren" placeholder="bijv. eindredactie" maxlength="2000"><span class="fstate" data-state-for="kanaal.nieuwsbrief.analyseren"></span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENTPIJLERS -->
+  <section class="panel" data-panel="pijlers">
+    <h2>Contentpijlers</h2>
+    <p class="sub">De 9 vaste rubrieken en hoe je de content over die rubrieken verdeelt. Sleep de schuifjes tot de verdeling klopt voor jouw team; samen maken ze 100%.</p>
+    <div class="pillars">
+      <div class="pillar-row" style="--dot:var(--tag-sfeer)"><label class="pillar-name" for="p-sfeer"><span class="sw"></span>De sfeer op school</label><input type="range" id="p-sfeer" class="field pillar-range" data-key="pijler.sfeer" data-label="De sfeer op school - aandeel" data-default="20" min="0" max="100" step="5" value="20"><output class="pillar-pct" for="p-sfeer">20%</output><span class="fstate" data-state-for="pijler.sfeer"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-events)"><label class="pillar-name" for="p-evenementen"><span class="sw"></span>Evenementen (kampen, sportdagen, excursies)</label><input type="range" id="p-evenementen" class="field pillar-range" data-key="pijler.evenementen" data-label="Evenementen (kampen, sportdagen, excursies) - aandeel" data-default="15" min="0" max="100" step="5" value="15"><output class="pillar-pct" for="p-evenementen">15%</output><span class="fstate" data-state-for="pijler.evenementen"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-eigenwijs)"><label class="pillar-name" for="p-eigenwijs"><span class="sw"></span>Eigenwijs Klassiek: traditie en talent</label><input type="range" id="p-eigenwijs" class="field pillar-range" data-key="pijler.eigenwijs" data-label="Eigenwijs Klassiek: traditie en talent - aandeel" data-default="15" min="0" max="100" step="5" value="15"><output class="pillar-pct" for="p-eigenwijs">15%</output><span class="fstate" data-state-for="pijler.eigenwijs"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-talent)"><label class="pillar-name" for="p-talent"><span class="sw"></span>Talentgroepen sport en theater</label><input type="range" id="p-talent" class="field pillar-range" data-key="pijler.talent" data-label="Talentgroepen sport en theater - aandeel" data-default="10" min="0" max="100" step="5" value="10"><output class="pillar-pct" for="p-talent">10%</output><span class="fstate" data-state-for="pijler.talent"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-specials)"><label class="pillar-name" for="p-specials"><span class="sw"></span>LY Specials (musical, debating, leeskringen)</label><input type="range" id="p-specials" class="field pillar-range" data-key="pijler.specials" data-label="LY Specials (musical, debating, leeskringen) - aandeel" data-default="10" min="0" max="100" step="5" value="10"><output class="pillar-pct" for="p-specials">10%</output><span class="fstate" data-state-for="pijler.specials"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-woord)"><label class="pillar-name" for="p-aanhetwoord"><span class="sw"></span>Docenten en leerlingen aan het woord</label><input type="range" id="p-aanhetwoord" class="field pillar-range" data-key="pijler.aanhetwoord" data-label="Docenten en leerlingen aan het woord - aandeel" data-default="10" min="0" max="100" step="5" value="10"><output class="pillar-pct" for="p-aanhetwoord">10%</output><span class="fstate" data-state-for="pijler.aanhetwoord"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-kennis)"><label class="pillar-name" for="p-kennismaken"><span class="sw"></span>Kennismaken met LY (open huis, groep 8)</label><input type="range" id="p-kennismaken" class="field pillar-range" data-key="pijler.kennismaken" data-label="Kennismaken met LY (open huis, groep 8) - aandeel" data-default="10" min="0" max="100" step="5" value="10"><output class="pillar-pct" for="p-kennismaken">10%</output><span class="fstate" data-state-for="pijler.kennismaken"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-personeel)"><label class="pillar-name" for="p-personeel"><span class="sw"></span>Personeel en vacatures</label><input type="range" id="p-personeel" class="field pillar-range" data-key="pijler.personeel" data-label="Personeel en vacatures - aandeel" data-default="5" min="0" max="100" step="5" value="5"><output class="pillar-pct" for="p-personeel">5%</output><span class="fstate" data-state-for="pijler.personeel"></span></div>
+      <div class="pillar-row" style="--dot:var(--tag-mr)"><label class="pillar-name" for="p-mr"><span class="sw"></span>OR, MR en LR</label><input type="range" id="p-mr" class="field pillar-range" data-key="pijler.mr" data-label="OR, MR en LR - aandeel" data-default="5" min="0" max="100" step="5" value="5"><output class="pillar-pct" for="p-mr">5%</output><span class="fstate" data-state-for="pijler.mr"></span></div>
+    </div>
+    <div class="pillar-total" id="pillar-total" data-state="ok">
+      <span class="pt-label">Totaal</span><strong id="pillar-sum">100%</strong><span id="pillar-note">Precies verdeeld</span>
+      <button class="btn ghost" id="pillar-reset" type="button">Standaardverdeling herstellen</button>
+    </div>
+  </section>
+
+  <!-- FORMATS -->
+  <section class="panel" data-panel="formats">
+    <h2>Formats per kanaal</h2>
+    <p class="sub">Vaste vormen per kanaal, zodat je niet steeds opnieuw hoeft te bedenken. Vul per kanaal de formats en een voorbeeld in; de grijze tekst is een suggestie.</p>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Kanaal</th><th>Geschikte formats</th><th>Voorbeeld</th></tr></thead>
+        <tbody>
+          <tr><td>TikTok</td><td><textarea class="field" rows="2" data-key="format.tiktok.formats" data-label="TikTok - Geschikte formats" placeholder="bijv. Korte video ongeveer 25 sec, duo/trend-video, POV" maxlength="2000"></textarea><span class="fstate" data-state-for="format.tiktok.formats"></span></td><td><textarea class="field" rows="2" data-key="format.tiktok.voorbeeld" data-label="TikTok - Voorbeeld" placeholder="bijv. Een dag uit het leven van een brugklasser" maxlength="2000"></textarea><span class="fstate" data-state-for="format.tiktok.voorbeeld"></span></td></tr>
+          <tr><td>Instagram</td><td><textarea class="field" rows="2" data-key="format.instagram.formats" data-label="Instagram - Geschikte formats" placeholder="bijv. Reel, carousel, story, foto-post" maxlength="2000"></textarea><span class="fstate" data-state-for="format.instagram.formats"></span></td><td><textarea class="field" rows="2" data-key="format.instagram.voorbeeld" data-label="Instagram - Voorbeeld" placeholder="bijv. Carousel met sfeerbeelden van een excursie" maxlength="2000"></textarea><span class="fstate" data-state-for="format.instagram.voorbeeld"></span></td></tr>
+          <tr><td>Facebook</td><td><textarea class="field" rows="2" data-key="format.facebook.formats" data-label="Facebook - Geschikte formats" placeholder="bijv. Doorplaatsing vanuit Instagram" maxlength="2000"></textarea><span class="fstate" data-state-for="format.facebook.formats"></span></td><td><textarea class="field" rows="2" data-key="format.facebook.voorbeeld" data-label="Facebook - Voorbeeld" placeholder="bijv. Zelfde content als Instagram-feed" maxlength="2000"></textarea><span class="fstate" data-state-for="format.facebook.voorbeeld"></span></td></tr>
+          <tr><td>LinkedIn</td><td><textarea class="field" rows="2" data-key="format.linkedin.formats" data-label="LinkedIn - Geschikte formats" placeholder="bijv. Statische post, kort artikel" maxlength="2000"></textarea><span class="fstate" data-state-for="format.linkedin.formats"></span></td><td><textarea class="field" rows="2" data-key="format.linkedin.voorbeeld" data-label="LinkedIn - Voorbeeld" placeholder="bijv. Vacature of &quot;werken bij&quot; met quote van docent" maxlength="2000"></textarea><span class="fstate" data-state-for="format.linkedin.voorbeeld"></span></td></tr>
+          <tr><td>Website / landingpagina</td><td><textarea class="field" rows="2" data-key="format.website.formats" data-label="Website / landingpagina - Geschikte formats" placeholder="bijv. Landingpagina met FAQ/schema, blog" maxlength="2000"></textarea><span class="fstate" data-state-for="format.website.formats"></span></td><td><textarea class="field" rows="2" data-key="format.website.voorbeeld" data-label="Website / landingpagina - Voorbeeld" placeholder="bijv. Landingpagina &quot;Gymnasium in Den Haag&quot; met veelgestelde vragen" maxlength="2000"></textarea><span class="fstate" data-state-for="format.website.voorbeeld"></span></td></tr>
+          <tr><td>Nieuwsbrief</td><td><textarea class="field" rows="2" data-key="format.nieuwsbrief.formats" data-label="Nieuwsbrief - Geschikte formats" placeholder="bijv. Vaste rubriek + nieuwsblok" maxlength="2000"></textarea><span class="fstate" data-state-for="format.nieuwsbrief.formats"></span></td><td><textarea class="field" rows="2" data-key="format.nieuwsbrief.voorbeeld" data-label="Nieuwsbrief - Voorbeeld" placeholder="bijv. Nieuws uit de school + agenda" maxlength="2000"></textarea><span class="fstate" data-state-for="format.nieuwsbrief.voorbeeld"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTENTKALENDER -->
+  <section class="panel" data-panel="kalender">
+    <h2>Contentkalender</h2>
+    <p class="sub">Deze planning vult zich automatisch. Het aantal posts komt uit de frequentie (stap 1), de makers uit de rollen per kanaal (stap 2), de onderwerpen uit de verdeling over de pijlers (stap 3) en de vorm uit de formats (stap 4). Pas daar iets aan en de kalender verandert mee.</p>
+    <div class="kal-controls">
+      <label for="kal-start">Startdatum<input type="date" id="kal-start" class="field kal-in" data-key="kal.start" data-label="Startdatum kalender"><span class="fstate" data-state-for="kal.start"></span></label>
+      <label for="kal-weken">Periode<select id="kal-weken" class="field kal-in" data-key="kal.weken" data-default="4" data-label="Periode kalender"><option value="2">2 weken</option><option value="4">4 weken</option><option value="6">6 weken</option><option value="8">8 weken</option></select><span class="fstate" data-state-for="kal.weken"></span></label>
+    </div>
+    <div id="kal-summary" class="kal-summary" aria-live="polite"></div>
+    <div id="kal-list"></div>
+  </section>
+
+  <!-- ANALYSE -->
+  <section class="panel" data-panel="analyse">
+    <h2>Analyse &amp; optimalisatie</h2>
+    <p class="sub">Na afloop van elke maand: wat werkte, en wat pas je aan? Voeg per maand een rij toe, zodat je over de maanden heen ziet wat er verandert.</p>
+    <input type="hidden" class="field" id="analyse-rijen" data-key="analyse.rijen" data-default="nov" data-label="Maanden in de analyse">
+
+    <h3 class="an-h">Voortgang per kanaal</h3>
+    <p class="an-sub">Het laatst ingevulde resultaat afgezet tegen je streefwaarde uit stap 1, gerekend vanaf de nulmeting.</p>
+    <div id="voortgang" class="voortgang" aria-live="polite"></div>
+
+    <h3 class="an-h">Resultaten per maand</h3>
+    <p class="an-sub">Vul per maand het behaalde resultaat in, als getal en in dezelfde eenheid als je streefwaarde.</p>
+    <div class="tbl-scroll"><table class="res-tbl" id="res-tbl"></table></div>
+    <p class="analyse-empty" id="analyse-empty" hidden>Nog geen maanden. Voeg hieronder de eerste maand toe.</p>
+    <div class="analyse-actions"><button class="btn" type="button" id="analyse-add">+ Maand toevoegen</button></div>
+
+    <h3 class="an-h">Inzichten per maand</h3>
+    <div class="tbl-scroll">
+      <table class="analyse-tbl">
+        <thead><tr><th>Maand</th><th>Best presterende pijler</th><th>Best presterend format</th><th>Belangrijkste inzicht</th><th>Aanpassing volgende maand</th><th><span class="vh">Verwijderen</span></th></tr></thead>
+        <tbody id="analyse-rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="src">
+    <svg viewBox="0 0 98 98" aria-hidden="true"><polygon fill="#fff" fill-opacity=".6" points="78.6,.4 97.1,13.3 65.6,58.5 52.4,39.3"/><polygon fill="#fff" fill-opacity=".6" points="14.3,62 39.2,97.2 11,97.2 0,80.5"/><polygon fill="#fff" points="6.6,13.3 25.3,.4 65.6,58.5 38.5,58.5"/><polygon fill="#fff" fill-opacity=".86" points="38.5,58.5 65.6,58.5 39.2,97.2 25.3,77.4"/></svg>
+    <span>Lyceum Ypenburg concept contentkalender</span>
+  </footer>
+
+</div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
